@@ -16,11 +16,6 @@ namespace ScriptableEvents
         : BaseScriptableEventListener, IScriptableEventListener<TArg>, ISerializationCallbackReceiver
     {
         #region Editor
-        [HideInInspector]
-        [SerializeField]
-        [Obsolete]
-        [Tooltip("ScriptableEvent that triggers the On Raised UnityEvent")]
-        private BaseScriptableEvent<TArg> scriptableEvent;
 
         [SerializeField]
         [Tooltip("List of ScriptableEvents that trigger the On Raised UnityEvent")]
@@ -61,14 +56,6 @@ namespace ScriptableEvents
             if (Application.isPlaying)
             {
                 return;
-            }
-            if (scriptableEvent!=false)
-            {
-                if (!scriptableEvents.Contains(scriptableEvent))
-                {
-                    scriptableEvents.Add(scriptableEvent);
-                }
-                scriptableEvent = null;
             }
         }
 
